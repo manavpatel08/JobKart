@@ -1,0 +1,10 @@
+fastapi
+uvicorn[standard]
+python-dotenv
+requests
+pydantic
+supabase
+httpx
+beautifulsoup4
+lxml
+python-multipart
