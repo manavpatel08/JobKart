@@ -1,0 +1,116 @@
+@import url('https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap');
+
+:root {
+  --bg:      #080c14;
+  --bg-card: #0d1220;
+  --bg-el:   #121929;
+  --bg-hov:  #182034;
+  --bd:      #1e2a40;
+  --bd-h:    #2d3f5c;
+  --t1:  #e8eef6;
+  --t2:  #7a8fa8;
+  --t3:  #3d5270;
+  --blue:    #3b82f6;
+  --blue-d:  rgba(59,130,246,.12);
+  --blue-b:  rgba(59,130,246,.32);
+  --green:   #10b981;
+  --green-d: rgba(16,185,129,.12);
+  --yellow:  #f59e0b;
+  --yellow-d:rgba(245,158,11,.12);
+  --red:     #ef4444;
+  --red-d:   rgba(239,68,68,.12);
+  --purple:  #8b5cf6;
+  --purple-d:rgba(139,92,246,.12);
+  /* orange = blue (removed orange from design) */
+  --orange:   #3b82f6;
+  --orange-d: rgba(59,130,246,.12);
+  --r1:4px; --r2:8px; --r3:12px; --r4:16px; --r5:24px;
+  --ease: all .16s cubic-bezier(.4,0,.2,1);
+  --sh:    0 2px 8px rgba(0,0,0,.6),0 0 0 1px var(--bd);
+  --sh-lg: 0 20px 60px rgba(0,0,0,.7),0 0 0 1px var(--bd);
+}
+
+[data-theme="light"] {
+  --bg:      #f0f4fa;
+  --bg-card: #ffffff;
+  --bg-el:   #e8edf6;
+  --bg-hov:  #dde4f0;
+  --bd:      #ccd5e8;
+  --bd-h:    #a8b8d4;
+  --t1:  #0d1524;
+  --t2:  #374863;
+  --t3:  #6b82a0;
+  --blue-d:  rgba(59,130,246,.10);
+  --blue-b:  rgba(59,130,246,.28);
+  --green-d:  rgba(16,185,129,.10);
+  --yellow-d: rgba(245,158,11,.10);
+  --red-d:    rgba(239,68,68,.10);
+  --purple-d: rgba(139,92,246,.10);
+  --orange-d: rgba(59,130,246,.10);
+  --sh:    0 2px 8px rgba(0,0,0,.08),0 0 0 1px var(--bd);
+  --sh-lg: 0 20px 60px rgba(0,0,0,.12),0 0 0 1px var(--bd);
+}
+
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Sora',-apple-system,sans-serif;background:var(--bg);color:var(--t1);font-size:14px;line-height:1.6;min-height:100vh;-webkit-font-smoothing:antialiased;transition:background .25s,color .25s}
+a{color:var(--blue);text-decoration:none}
+button,input,select,textarea{font-family:inherit}
+::-webkit-scrollbar{width:4px;height:4px}
+::-webkit-scrollbar-track{background:transparent}
+::-webkit-scrollbar-thumb{background:var(--bd-h);border-radius:2px}
+
+@keyframes fadeUp    {from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
+@keyframes fadeIn    {from{opacity:0}to{opacity:1}}
+@keyframes scaleIn   {from{opacity:0;transform:scale(.95)}to{opacity:1;transform:none}}
+@keyframes spin      {to{transform:rotate(360deg)}}
+@keyframes slideDown {from{opacity:0;transform:translateY(-8px)}to{opacity:1;transform:none}}
+@keyframes pulse     {0%,100%{opacity:1}50%{opacity:.4}}
+@keyframes floatY    {0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
+@keyframes gradShift {0%{background-position:0% 50%}50%{background-position:100% 50%}100%{background-position:0% 50%}}
+@keyframes borderGlow{0%,100%{box-shadow:0 0 0 0 rgba(59,130,246,0)}50%{box-shadow:0 0 0 3px rgba(59,130,246,.18)}}
+@keyframes countUp   {from{transform:translateY(6px);opacity:0}to{transform:none;opacity:1}}
+@keyframes radarPulse{0%{transform:scale(.4);opacity:.9}100%{transform:scale(2.4);opacity:0}}
+@keyframes dropIn    {from{opacity:0;transform:translateY(-6px) scale(.97)}to{opacity:1;transform:none}}
+
+.fade-up  {animation:fadeUp .32s cubic-bezier(.4,0,.2,1) both}
+.scale-in {animation:scaleIn .2s ease both}
+.mono     {font-family:'JetBrains Mono',monospace}
+.float    {animation:floatY 4s ease-in-out infinite}
+
+.grad-text{
+  background:linear-gradient(135deg,#3b82f6,#6366f1,#8b5cf6);
+  background-size:200% 200%;
+  animation:gradShift 4s ease infinite;
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+  background-clip:text;
+}
+
+input[type=range]{-webkit-appearance:none;appearance:none;width:100%;height:3px;background:var(--bd);border-radius:2px;outline:none;cursor:pointer}
+input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:14px;height:14px;background:var(--blue);border-radius:50%;border:2px solid var(--bg-card);cursor:pointer}
+input[type=checkbox]{width:14px;height:14px;accent-color:var(--blue);cursor:pointer}
+
+input,textarea,select{color:var(--t1);background:var(--bg-el);border:1px solid var(--bd);border-radius:var(--r2);transition:var(--ease)}
+input::placeholder,textarea::placeholder{color:var(--t3)}
+input:focus,textarea:focus{outline:none;border-color:var(--blue)}
+
+/* Account dropdown */
+.acct-menu{
+  position:absolute;top:calc(100% + 10px);right:0;
+  min-width:210px;
+  background:var(--bg-card);border:1px solid var(--bd);
+  border-radius:var(--r4);padding:6px;
+  box-shadow:var(--sh-lg);
+  animation:dropIn .18s ease both;
+  z-index:600;
+}
+.acct-item{
+  display:flex;align-items:center;gap:10px;
+  padding:9px 12px;border-radius:var(--r2);
+  font-size:13px;font-weight:500;color:var(--t2);
+  cursor:pointer;transition:var(--ease);
+  background:none;border:none;width:100%;text-align:left;
+}
+.acct-item:hover{background:var(--bg-el);color:var(--t1)}
+.acct-item.red:hover{background:var(--red-d);color:var(--red)}
+.acct-sep{height:1px;background:var(--bd);margin:4px 0}
