@@ -8,3 +8,7 @@ httpx
 beautifulsoup4
 lxml
 python-multipart
+PyMuPDF
+sentence-transformers==2.7.0
+scikit-learn
+groq
